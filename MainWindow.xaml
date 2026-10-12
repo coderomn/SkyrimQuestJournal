@@ -1,0 +1,73 @@
+﻿<Window x:Class="NazwaProjektu.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NazwaProjektu"
+        Title="Dragonborn's Journal"
+        Height="500"
+        Width="800"
+        Background="Black">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="Add" Content="Add Quest" Click="Add_Click" Margin="5,5,5,5" Foreground="White" Background="#333333" BorderBrush="White" Padding="5"/>
+            <Button x:Name="Edit" Content="Edit Quest" Click="Edit_Click" Margin="0,5,5,5" Foreground="White" Background="#333333" BorderBrush="White" Padding="5"/>
+            <Button x:Name="Delete" Content="Delete" Click="Delete_Click" Margin="0,5,5,5" Foreground="White" Background="#333333" BorderBrush="White" Padding="5"/>
+            <Button x:Name="Save" Content="Save" Click="Save_Click" Margin="0,5,5,5" Foreground="White" Background="#333333" BorderBrush="White" Padding="5"/>
+            <Button x:Name="About" Content="About" Click="About_Click" Margin="0,5,5,5" Foreground="White" Background="#333333" BorderBrush="White" Padding="5"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    Margin="0,10,0,10">
+
+            <TextBlock Text="Search: "
+                       VerticalAlignment="Center"
+                       Foreground="White"
+                       Padding="5,0,0,0"/>
+
+            <TextBox x:Name="Search"
+                     Width="200"
+                     Background="#333333"
+                     Foreground="White"
+                     BorderBrush="White"
+                     Margin="5"
+                     TextChanged="Search_TextChanged"/>
+
+            <Button x:Name="Sort"
+                    Content="Sort by name"
+                    Click="Sort_Click"
+                    Margin="5,5,5,5" Foreground="White" Background="#333333" BorderBrush="White"/>
+
+        </StackPanel>
+
+        <ListView x:Name="QuestList"
+                  Grid.Row="2"
+                  Background="#333333"
+                  BorderBrush="White" SelectionChanged="QuestList_SelectionChanged">
+
+            <ListView.View>
+
+                <GridView>
+                    <GridViewColumn Header="Quest"
+                                    DisplayMemberBinding="{Binding Name}"
+                                    Width="250"/>
+
+                    <GridViewColumn Header="Description"
+                                    DisplayMemberBinding="{Binding Desc}"
+                                    Width="510"/>
+
+                </GridView>
+                
+            </ListView.View>
+
+        </ListView>
+
+    </Grid>
+</Window>
